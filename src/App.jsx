@@ -28,6 +28,14 @@ function App() {
     setSelectedAlgorithm(algorithm)
   }
 
+  const sortArrayHandler = () => {
+    // setNumbers(sortArray(createRandomArrayBySize(numbers.length)))
+  }
+
+  const sortArrayReverseHandler = () => {
+    // setNumbers((numbers) => sortArrayReverse(numbers))
+  }
+
   const toggleDarkMode = () => {
     if (isDarkMode) {
       document.documentElement.setAttribute("data-theme", "light");
@@ -39,8 +47,20 @@ function App() {
 
   return (
     <div className={styles['main-layout']}>
-      <Navbar isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} onShuffleArray={shuffleArrayHandler} selectedAlgorithm={selectedAlgorithm} onAlgorithmChange={algorithmChangedHandler} />
-      <Visualizer numbers={numbers} onArraySizeChange={arraySizeChangedHandler} selectedAlgorithm={selectedAlgorithm}/>
+      <Navbar 
+        isDarkMode={isDarkMode} 
+        toggleDarkMode={toggleDarkMode} 
+        onShuffleArray={shuffleArrayHandler} 
+        selectedAlgorithm={selectedAlgorithm} 
+        onAlgorithmChange={algorithmChangedHandler}
+      />
+      <Visualizer 
+        numbers={numbers} 
+        onArraySizeChange={arraySizeChangedHandler} 
+        selectedAlgorithm={selectedAlgorithm}
+        onSortArray={sortArrayHandler}
+        onSortArrayReverse={sortArrayReverseHandler}
+      />
     </div>
   )
 }

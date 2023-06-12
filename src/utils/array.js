@@ -23,6 +23,14 @@ export const createRandomArrayBySize = (size) => {
     return array;
 }
 
+export const sortArray = (array) => {
+    return array.sort();
+}
+
+export const sortArrayReverse = (array) => {
+    return array.reverse(sortArray(array));
+}
+
 export const swap = (arr, x, y) => {
     let tmp = arr[x];
     arr[x] = arr[y];

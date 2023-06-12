@@ -1,5 +1,5 @@
-import { BsBoxArrowInRight } from 'react-icons/bs'
-import styles from './AlgorithmInfo.module.css'
+import { BsBoxArrowInRight } from 'react-icons/bs';
+import styles from './AlgorithmInfo.module.css';
 
 const COMPLEXITIES = {
     bubbleSort: {
@@ -41,15 +41,15 @@ const AlgorithmInfo = (props) => {
                 <div style={{marginBottom: '10px'}}>Time Complexity</div>
                 <div className={styles['performance-info']}>
                     <div>Best Case: {COMPLEXITIES[props.selectedAlgorithm].best_case}</div>
-                    <BsBoxArrowInRight />
+                    <BsBoxArrowInRight size="1.2rem" className={styles['icon']} onClick={props.onSortArray}/>
                 </div>
                 <div className={styles['performance-info']}>
                     <div>Avg. Case: {COMPLEXITIES[props.selectedAlgorithm].avg_case}</div>
-                    <BsBoxArrowInRight />
+                    <BsBoxArrowInRight size="1.2rem" className={styles['icon']}/>
                 </div>
                 <div className={styles['performance-info']}>
                     <div>Worst Case: {COMPLEXITIES[props.selectedAlgorithm].worst_case}</div>
-                    <BsBoxArrowInRight />
+                    <BsBoxArrowInRight size="1.2rem" className={styles['icon']}/>
                 </div>
             </div>
             <div className={styles['info-card']}>

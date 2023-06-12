@@ -8,7 +8,7 @@ const Visualizer = (props) => {
     
     return (
         <main className={styles['visualizer-container']}>
-            <AlgorithmInfo onArraySizeChange={props.onArraySizeChange} arraySize={arraySize} selectedAlgorithm={props.selectedAlgorithm}/>
+            <AlgorithmInfo onArraySizeChange={props.onArraySizeChange} arraySize={arraySize} selectedAlgorithm={props.selectedAlgorithm} onSortArray={props.onSortArray}/>
             <div className={styles['visualizer']}>
                 {props.numbers.map((num, idx) => <Bar key={num} value={num} length={arraySize}/>)}
             </div>
