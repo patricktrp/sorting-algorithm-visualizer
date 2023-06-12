@@ -1,0 +1,13 @@
+.runtime-info {
+    flex-basis: 12%;
+    background-color: salmon;
+    height: 70vh;
+    margin: 1.5%;
+}
+
+@media screen and (max-width: 1024px) {
+    .runtime-info {
+        flex-basis: 47%;
+        height: 20vh;
+    }
+}
