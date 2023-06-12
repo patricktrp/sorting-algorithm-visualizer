@@ -1,5 +1,4 @@
-import { useEffect, useState } from 'react';
-import styles from './App.module.css';
+import { useState } from 'react';
 import { algorithms } from './algorithms/constants';
 import Navbar from './components/Navbar';
 import Visualizer from './components/Visualizer';
@@ -8,13 +7,8 @@ import { createRandomArrayBySize } from './utils/array';
 const INIITAL_ARRAY_LENGTH = 100;
 
 function App() {
-  const [isDarkMode, setIsDarkMode] = useState(true);
   const [numbers, setNumbers] = useState(createRandomArrayBySize(INIITAL_ARRAY_LENGTH))
   const [selectedAlgorithm, setSelectedAlgorithm] = useState(algorithms.BUBBLE_SORT)
-
-  useEffect(() => {
-    document.documentElement.setAttribute("data-theme", "dark");
-  }, [])
 
   const shuffleArrayHandler = () => {
     setNumbers((numbers) => createRandomArrayBySize(numbers.length))
@@ -28,40 +22,27 @@ function App() {
     setSelectedAlgorithm(algorithm)
   }
 
-  const sortArrayHandler = () => {
-    // setNumbers(sortArray(createRandomArrayBySize(numbers.length)))
+  const sortNumbers = () => {
+    setNumbers(numbers => [...numbers].sort((a, b) => a - b));
   }
 
-  const sortArrayReverseHandler = () => {
-    // setNumbers((numbers) => sortArrayReverse(numbers))
-  }
-
-  const toggleDarkMode = () => {
-    if (isDarkMode) {
-      document.documentElement.setAttribute("data-theme", "light");
-    } else {
-      document.documentElement.setAttribute("data-theme", "dark");
-    }
-    setIsDarkMode(darkmode => !darkmode)
+  const sortNumbersReverse = () => {
+    setNumbers(numbers => [...numbers].sort((a, b) => b - a));
   }
 
   return (
-    <div className={styles['main-layout']}>
-      <Navbar 
-        isDarkMode={isDarkMode} 
-        toggleDarkMode={toggleDarkMode} 
-        onShuffleArray={shuffleArrayHandler} 
-        selectedAlgorithm={selectedAlgorithm} 
+    <>
+      <Navbar
+        onShuffleArray={shuffleArrayHandler}
+        selectedAlgorithm={selectedAlgorithm}
         onAlgorithmChange={algorithmChangedHandler}
       />
-      <Visualizer 
-        numbers={numbers} 
-        onArraySizeChange={arraySizeChangedHandler} 
+      <Visualizer
+        numbers={numbers}
+        onArraySizeChange={arraySizeChangedHandler}
         selectedAlgorithm={selectedAlgorithm}
-        onSortArray={sortArrayHandler}
-        onSortArrayReverse={sortArrayReverseHandler}
       />
-    </div>
+    </>
   )
 }
 
