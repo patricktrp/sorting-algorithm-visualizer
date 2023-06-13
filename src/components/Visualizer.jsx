@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import AlgorithmInfo from './AlgorithmInfo'
 import Bar from './Bar'
 import RuntimeInfo from './RuntimeInfo'
@@ -9,9 +8,12 @@ const Visualizer = (props) => {
 
     return (
         <main className={styles['visualizer-container']}>
-            <AlgorithmInfo onArraySizeChange={props.onArraySizeChange} arraySize={arraySize} selectedAlgorithm={props.selectedAlgorithm} />
+            <AlgorithmInfo onArraySizeChange={props.onArraySizeChange} arraySize={arraySize} selectedAlgorithm={props.selectedAlgorithm} applyCaseOrdering={props.applyCaseOrdering} animationSpeed={props.animationSpeed} onAnimationSpeedChange={props.onAnimationSpeedChange} />
             <div className={styles['visualizer']}>
-                {props.numbers.map((num, idx) => <Bar key={num} value={num} length={arraySize} />)}
+                {props.numbers.map((num, idx) => {
+                    const color = props.barColors[idx] || null;
+                    return <Bar key={num} value={num} length={arraySize} color={color} />
+                })}
             </div>
             <RuntimeInfo />
         </main>

@@ -1,14 +1,20 @@
 import { useState } from 'react';
-import { algorithms } from './algorithms/constants';
+import { Algorithms } from './algorithms/constants';
 import Navbar from './components/Navbar';
 import Visualizer from './components/Visualizer';
-import { createRandomArrayBySize } from './utils/array';
+import { createRandomArrayBySize, swap } from './utils/array';
+import { Ordering } from './utils/array';
+import { getAnimations, AnimationTypes } from './animations';
 
 const INIITAL_ARRAY_LENGTH = 100;
+const INITIAL_ANIMATION_SPEED = 200;
 
 function App() {
   const [numbers, setNumbers] = useState(createRandomArrayBySize(INIITAL_ARRAY_LENGTH))
-  const [selectedAlgorithm, setSelectedAlgorithm] = useState(algorithms.BUBBLE_SORT)
+  const [selectedAlgorithm, setSelectedAlgorithm] = useState(Algorithms.BUBBLE_SORT)
+  const [barColors, setBarColors] = useState({})
+  const [isAnimating, setIsAnimating] = useState(false);
+  const [animationSpeed, setAnimationSpeed] = useState(INITIAL_ANIMATION_SPEED)
 
   const shuffleArrayHandler = () => {
     setNumbers((numbers) => createRandomArrayBySize(numbers.length))
@@ -30,17 +36,103 @@ function App() {
     setNumbers(numbers => [...numbers].sort((a, b) => b - a));
   }
 
+  const applyCaseOrdering = (ordering) => {
+    switch (ordering) {
+      case Ordering.IN_ORDER:
+        sortNumbers();
+        break;
+      case Ordering.REVERSE:
+        sortNumbersReverse();
+        break;
+      case Ordering.RANDOM:
+        shuffleArrayHandler();
+        break;
+      default:
+        break;
+    }
+  }
+
+  const animationSpeedChangedHandler = (speed) => {
+    setAnimationSpeed(speed);
+  }
+
+  const animationHandler = () => {
+    setIsAnimating(true);
+    const animations = getAnimations(selectedAlgorithm, [...numbers])
+
+    for (let i = 0; i < animations.length; i++) {
+      const animation = animations[i];
+      switch (animation.type) {
+
+        case AnimationTypes.SWAP:
+          setTimeout(() => {
+            const [i, j] = animation.indexes;
+            setNumbers((oldNumbers) => {
+              return swap([...oldNumbers], i, j);
+            })
+          }, i * animationSpeed);
+          break;
+
+        case AnimationTypes.COLOR:
+          setTimeout(() => {
+            const coloring = animation.coloring;
+            setBarColors(oldBarColors => {
+              const newBarColors = { ...oldBarColors };
+              for (let i = 0; i < coloring.length; i++) {
+                newBarColors[coloring[i].index] = coloring[i].color
+              }
+              return newBarColors;
+            })
+          }, i * animationSpeed)
+          break;
+
+        case AnimationTypes.COLOR_RESET:
+          setTimeout(() => {
+            setBarColors({})
+          }, i * animationSpeed);
+          break;
+
+        case AnimationTypes.COLOR_RESET_BY_INDEXES:
+          setTimeout(() => {
+            const indexes = animation.indexes;
+            setBarColors(oldBarColors => {
+              const newBarColors = { ...oldBarColors };
+              for (const index of indexes) {
+                delete newBarColors[index];
+              }
+              return newBarColors;
+            })
+          }, i * animationSpeed)
+          break;
+
+        default:
+          break;
+      }
+    }
+
+    setTimeout(() => {
+      setIsAnimating(false);
+    }, (animations.length * animationSpeed) + 250)
+
+  }
+
   return (
     <>
       <Navbar
         onShuffleArray={shuffleArrayHandler}
         selectedAlgorithm={selectedAlgorithm}
         onAlgorithmChange={algorithmChangedHandler}
+        onAnimate={animationHandler}
+        isAnimating={isAnimating}
       />
       <Visualizer
         numbers={numbers}
         onArraySizeChange={arraySizeChangedHandler}
+        onAnimationSpeedChange={animationSpeedChangedHandler}
+        animationSpeed={animationSpeed}
         selectedAlgorithm={selectedAlgorithm}
+        applyCaseOrdering={applyCaseOrdering}
+        barColors={barColors}
       />
     </>
   )

@@ -1,8 +1,8 @@
-import { Select } from '@chakra-ui/react';
+import { Button, Select } from '@chakra-ui/react';
 import { BiSortUp } from 'react-icons/bi';
 import { BsFillMoonFill, BsFillSunFill } from 'react-icons/bs';
 import { FaGithubSquare, FaLinkedin } from 'react-icons/fa';
-import { algorithms } from '../algorithms/constants';
+import { Algorithms } from '../algorithms/constants';
 import styles from './Navbar.module.css';
 import { useState, useEffect } from 'react'
 
@@ -30,16 +30,29 @@ const Navbar = (props) => {
                 </div>
 
                 <div style={{ display: 'flex' }}>
-                    <button onClick={props.onShuffleArray}>Shuffle</button>
+                    <Button isLoading={props.isAnimating} onClick={props.onShuffleArray}>Shuffle</Button>
                     <Select value={props.selectedAlgorithm} onChange={e => props.onAlgorithmChange(e.target.value)}>
-                        <option value={algorithms.BUBBLE_SORT}>Bubblesort</option>
-                        <option value={algorithms.INSERTION_SORT}>Insertion Sort</option>
-                        <option value={algorithms.SELECTION_SORT}>Selection Sort</option>
-                        <option value={algorithms.HEAP_SORT}>Heapsort</option>
-                        <option value={algorithms.MERGE_SORT}>Mergesort</option>
-                        <option value={algorithms.QUICK_SORT}>Quicksort</option>
+                        <option value={Algorithms.BUBBLE_SORT}>Bubblesort</option>
+                        <option value={Algorithms.INSERTION_SORT}>Insertion Sort</option>
+                        <option value={Algorithms.SELECTION_SORT}>Selection Sort</option>
+                        <option value={Algorithms.HEAP_SORT}>Heapsort</option>
+                        <option value={Algorithms.MERGE_SORT}>Mergesort</option>
+                        <option value={Algorithms.QUICK_SORT}>Quicksort</option>
                     </Select>
-                    <button>Animate</button>
+                    {/* <Button isLoading={props.isAnimating} onClick={props.onAnimate}>Animate</Button> */}
+                    <Button
+                        height='3.5vh'
+                        maxHeight={'50px'}
+                        onClick={props.onAnimate}
+                        isLoading={props.isAnimating}
+                        width='200px'
+                        backgroundColor='white'
+                        // loadingText='Animating'
+                        _hover={{
+                            background: 'grey',
+                            color: 'white',
+                        }}
+                    >Animate</Button>
                 </div>
 
                 <ul className={styles['navbar-menu-list']}>

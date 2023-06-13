@@ -5,7 +5,7 @@ const MERGE_SORT = 'mergeSort';
 const HEAP_SORT = 'heapSort';
 const QUICK_SORT = 'quickSort';
 
-export const algorithms = {
+export const Algorithms = {
     BUBBLE_SORT,
     INSERTION_SORT,
     SELECTION_SORT,
