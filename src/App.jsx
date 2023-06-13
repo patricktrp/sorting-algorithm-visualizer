@@ -10,11 +10,13 @@ const INIITAL_ARRAY_LENGTH = 100;
 const INITIAL_ANIMATION_SPEED = 200;
 
 function App() {
-  const [numbers, setNumbers] = useState(createRandomArrayBySize(INIITAL_ARRAY_LENGTH))
-  const [selectedAlgorithm, setSelectedAlgorithm] = useState(Algorithms.BUBBLE_SORT)
-  const [barColors, setBarColors] = useState({})
+  const [numbers, setNumbers] = useState(createRandomArrayBySize(INIITAL_ARRAY_LENGTH));
+  const [selectedAlgorithm, setSelectedAlgorithm] = useState(Algorithms.BUBBLE_SORT);
+  const [barColors, setBarColors] = useState({});
   const [isAnimating, setIsAnimating] = useState(false);
-  const [animationSpeed, setAnimationSpeed] = useState(INITIAL_ANIMATION_SPEED)
+  const [animationSpeed, setAnimationSpeed] = useState(INITIAL_ANIMATION_SPEED);
+  const [comparisons, setComparisons] = useState(0);
+  const [swaps, setSwaps] = useState(0);
 
   const shuffleArrayHandler = () => {
     setNumbers((numbers) => createRandomArrayBySize(numbers.length))
@@ -58,7 +60,9 @@ function App() {
 
   const animationHandler = () => {
     setIsAnimating(true);
-    const animations = getAnimations(selectedAlgorithm, [...numbers])
+    setSwaps(0);
+    setComparisons(0);
+    const animations = getAnimations(selectedAlgorithm, [...numbers]);
 
     for (let i = 0; i < animations.length; i++) {
       const animation = animations[i];
@@ -67,6 +71,7 @@ function App() {
         case AnimationTypes.SWAP:
           setTimeout(() => {
             const [i, j] = animation.indexes;
+            setSwaps((swaps) => swaps + 1);
             setNumbers((oldNumbers) => {
               return swap([...oldNumbers], i, j);
             })
@@ -75,6 +80,9 @@ function App() {
 
         case AnimationTypes.COLOR:
           setTimeout(() => {
+            if (animation.isComparison) {
+              setComparisons(comparisons => comparisons + 1);
+            }
             const coloring = animation.coloring;
             setBarColors(oldBarColors => {
               const newBarColors = { ...oldBarColors };
@@ -112,7 +120,7 @@ function App() {
 
     setTimeout(() => {
       setIsAnimating(false);
-    }, (animations.length * animationSpeed) + 250)
+    }, (animations.length * animationSpeed) + 500)
 
   }
 
@@ -133,6 +141,8 @@ function App() {
         selectedAlgorithm={selectedAlgorithm}
         applyCaseOrdering={applyCaseOrdering}
         barColors={barColors}
+        swaps={swaps}
+        comparisons={comparisons}
       />
     </>
   )

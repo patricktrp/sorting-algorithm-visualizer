@@ -23,3 +23,7 @@
     cursor: pointer;
     margin-right: 0.3rem;
 }
+
+.navbar-menu-list li a {
+    color: var(--font-color-primary)
+}

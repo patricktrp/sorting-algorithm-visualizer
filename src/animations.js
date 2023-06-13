@@ -1,5 +1,7 @@
 import { Algorithms } from "./algorithms/constants";
 import { bubbleSort } from './algorithms/bubblesort';
+import { insertionSort } from "./algorithms/insertion-sort";
+import { selectionSort } from "./algorithms/selection-sort";
 
 export const getAnimations = (algorithm, array) => {
     let animations;
@@ -9,8 +11,10 @@ export const getAnimations = (algorithm, array) => {
             animations = bubbleSort(array);
             break;
         case Algorithms.INSERTION_SORT:
+            animations = insertionSort(array);
             break;
         case Algorithms.SELECTION_SORT:
+            animations = selectionSort(array);
             break;
         case Algorithms.MERGE_SORT:
             break;
@@ -30,4 +34,9 @@ export const AnimationTypes = {
     COLOR: "COLOR",
     COLOR_RESET: "COLOR_RESET",
     COLOR_RESET_BY_INDEXES: "COLOR_RESET_BY_INDEXES"
+}
+
+export const Statistics = {
+    SWAP: "SWAP",
+    COMPARISON: "COMPARISON"
 }

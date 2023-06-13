@@ -1,4 +1,4 @@
-import { Button, Select } from '@chakra-ui/react';
+import { Select } from '@chakra-ui/react';
 import { BiSortUp } from 'react-icons/bi';
 import { BsFillMoonFill, BsFillSunFill } from 'react-icons/bs';
 import { FaGithubSquare, FaLinkedin } from 'react-icons/fa';
@@ -30,8 +30,8 @@ const Navbar = (props) => {
                 </div>
 
                 <div style={{ display: 'flex' }}>
-                    <Button isLoading={props.isAnimating} onClick={props.onShuffleArray}>Shuffle</Button>
-                    <Select value={props.selectedAlgorithm} onChange={e => props.onAlgorithmChange(e.target.value)}>
+                    <button disabled={props.isAnimating} onClick={props.onShuffleArray}>Shuffle</button>
+                    <Select disabled={props.isAnimating} value={props.selectedAlgorithm} onChange={e => props.onAlgorithmChange(e.target.value)}>
                         <option value={Algorithms.BUBBLE_SORT}>Bubblesort</option>
                         <option value={Algorithms.INSERTION_SORT}>Insertion Sort</option>
                         <option value={Algorithms.SELECTION_SORT}>Selection Sort</option>
@@ -39,26 +39,13 @@ const Navbar = (props) => {
                         <option value={Algorithms.MERGE_SORT}>Mergesort</option>
                         <option value={Algorithms.QUICK_SORT}>Quicksort</option>
                     </Select>
-                    {/* <Button isLoading={props.isAnimating} onClick={props.onAnimate}>Animate</Button> */}
-                    <Button
-                        height='3.5vh'
-                        maxHeight={'50px'}
-                        onClick={props.onAnimate}
-                        isLoading={props.isAnimating}
-                        width='200px'
-                        backgroundColor='white'
-                        // loadingText='Animating'
-                        _hover={{
-                            background: 'grey',
-                            color: 'white',
-                        }}
-                    >Animate</Button>
+                    <button disabled={props.isAnimating} onClick={props.onAnimate}>Animate</button>
                 </div>
 
                 <ul className={styles['navbar-menu-list']}>
                     <li style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginRight: '20px' }}>{!isDarkMode ? <BsFillMoonFill onClick={toggleDarkMode} /> : <BsFillSunFill onClick={toggleDarkMode} />}</li>
-                    <li><FaGithubSquare size="1.8em" /></li>
-                    <li><FaLinkedin size="1.8em" /></li>
+                    <li><a target="_blank" rel="noreferrer" href="https://github.com/patricktrp/sorting-algorithm-visualizer"><FaGithubSquare size="1.8em" /></a></li>
+                    <li><a target="_blank" rel="noreferrer" href="https://www.linkedin.com/in/patrick-treppmann/"><FaLinkedin size="1.8em" /></a></li>
                 </ul>
             </div>
         </nav>

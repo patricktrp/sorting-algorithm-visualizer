@@ -15,7 +15,7 @@ const Visualizer = (props) => {
                     return <Bar key={num} value={num} length={arraySize} color={color} />
                 })}
             </div>
-            <RuntimeInfo />
+            <RuntimeInfo swaps={props.swaps} comparisons={props.comparisons} />
         </main>
     )
 }
