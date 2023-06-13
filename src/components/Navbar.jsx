@@ -29,17 +29,17 @@ const Navbar = (props) => {
                     <BiSortUp size="1.8em" />
                 </div>
 
-                <div style={{ display: 'flex' }}>
-                    <button disabled={props.isAnimating} onClick={props.onShuffleArray}>Shuffle</button>
-                    <Select disabled={props.isAnimating} value={props.selectedAlgorithm} onChange={e => props.onAlgorithmChange(e.target.value)}>
+                <div style={{ display: 'flex', width: '20%', alignItems: 'center', justifyContent: 'space-between' }}>
+                    <button className={styles['btn']} disabled={props.isAnimating} onClick={props.onShuffleArray}>Shuffle</button>
+                    <select disabled={props.isAnimating} value={props.selectedAlgorithm} onChange={e => props.onAlgorithmChange(e.target.value)}>
                         <option value={Algorithms.BUBBLE_SORT}>Bubblesort</option>
                         <option value={Algorithms.INSERTION_SORT}>Insertion Sort</option>
                         <option value={Algorithms.SELECTION_SORT}>Selection Sort</option>
                         <option value={Algorithms.HEAP_SORT}>Heapsort</option>
                         <option value={Algorithms.MERGE_SORT}>Mergesort</option>
                         <option value={Algorithms.QUICK_SORT}>Quicksort</option>
-                    </Select>
-                    <button disabled={props.isAnimating} onClick={props.onAnimate}>Animate</button>
+                    </select>
+                    <button className={styles['btn']} disabled={props.isAnimating} onClick={props.onAnimate}>Animate</button>
                 </div>
 
                 <ul className={styles['navbar-menu-list']}>

@@ -66,7 +66,7 @@ const AlgorithmInfo = (props) => {
     return (
         <div className={styles['algorithm-info']}>
             <div className={styles['info-card']}>
-                <div style={{ marginBottom: '10px' }}>{algorithm.name}</div>
+                <h3 style={{ marginTop: 0 }}>{algorithm.name}</h3>
                 <div>{algorithm.description}</div>
             </div>
             <div className={styles['info-card']}>

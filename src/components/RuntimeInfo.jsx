@@ -3,10 +3,14 @@ import styles from './RuntimeInfo.module.css'
 const RuntimeInfo = (props) => {
     return (
         <div className={styles['runtime-info']}>
-            <h3>Swaps:</h3>
-            <p>{props.swaps}</p>
-            <h3>Comparisons:</h3>
-            <p>{props.comparisons}</p>
+            <div className={styles['info-card']}>
+                <h3>Comparisons</h3>
+                <div>{props.comparisons}</div>
+            </div>
+            <div className={styles['info-card']}>
+                <h3>Swaps</h3>
+                <div>{props.swaps}</div>
+            </div>
         </div>
     )
 }
