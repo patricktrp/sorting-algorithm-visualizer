@@ -8,7 +8,7 @@ const Visualizer = (props) => {
 
     return (
         <main className={styles['visualizer-container']}>
-            <AlgorithmInfo onArraySizeChange={props.onArraySizeChange} arraySize={arraySize} selectedAlgorithm={props.selectedAlgorithm} applyCaseOrdering={props.applyCaseOrdering} animationSpeed={props.animationSpeed} onAnimationSpeedChange={props.onAnimationSpeedChange} />
+            <AlgorithmInfo isAnimating={props.isAnimating} onArraySizeChange={props.onArraySizeChange} arraySize={arraySize} selectedAlgorithm={props.selectedAlgorithm} applyCaseOrdering={props.applyCaseOrdering} animationSpeed={props.animationSpeed} onAnimationSpeedChange={props.onAnimationSpeedChange} />
             <div className={styles['visualizer']}>
                 {props.numbers.map((num, idx) => {
                     const color = props.barColors[idx] || null;

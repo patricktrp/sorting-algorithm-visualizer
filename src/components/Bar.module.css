@@ -1,7 +1,8 @@
 .bar {
     background-color: var(--font-color-primary);
-    margin-right: 0.2rem;
     width: 100%;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    border-left: 1px solid var(--background-secondary);
+    border-right: 1px solid var(--background-secondary);
 }

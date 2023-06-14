@@ -73,24 +73,24 @@ const AlgorithmInfo = (props) => {
                 <div style={{ marginBottom: '10px' }}>Time Complexity</div>
                 <div className={styles['performance-info']}>
                     <div>Best Case: {best_case.time}</div>
-                    <BsBoxArrowInRight size="1.2rem" className={styles['icon']} onClick={() => props.applyCaseOrdering(best_case.ordering)} />
+                    <BsBoxArrowInRight size="1.2rem" className={styles['icon']} onClick={() => props.isAnimating ? null : props.applyCaseOrdering(best_case.ordering)} />
                 </div>
                 <div className={styles['performance-info']}>
                     <div>Avg. Case: {avg_case.time}</div>
-                    <BsBoxArrowInRight size="1.2rem" className={styles['icon']} onClick={() => props.applyCaseOrdering(avg_case.ordering)} />
+                    <BsBoxArrowInRight size="1.2rem" className={styles['icon']} onClick={() => props.isAnimating ? null : props.applyCaseOrdering(avg_case.ordering)} />
                 </div>
                 <div className={styles['performance-info']}>
                     <div>Worst Case: {worst_case.time}</div>
-                    <BsBoxArrowInRight size="1.2rem" className={styles['icon']} onClick={() => props.applyCaseOrdering(worst_case.ordering)} />
+                    <BsBoxArrowInRight size="1.2rem" className={styles['icon']} onClick={() => props.isAnimating ? null : props.applyCaseOrdering(worst_case.ordering)} />
                 </div>
             </div>
             <div className={styles['info-card']}>
                 <div>Array Size</div>
-                <input type="range" min="10" max="200" onChange={e => props.onArraySizeChange(e.target.value)} value={props.arraySize} />
+                <input disabled={props.isAnimating} type="range" min="10" max="200" onChange={e => props.onArraySizeChange(e.target.value)} value={props.arraySize} />
             </div>
             <div className={styles['info-card']}>
                 <div>Animation Speed</div>
-                <input type="range" min="10" max="300" onChange={e => props.onAnimationSpeedChange(e.target.value)} value={props.animationSpeed} />
+                <input disabled={props.isAnimating} type="range" min="10" max="300" onChange={e => props.onAnimationSpeedChange(e.target.value)} value={props.animationSpeed} />
             </div>
         </div>
     )

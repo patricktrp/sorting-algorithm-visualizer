@@ -62,6 +62,7 @@ function App() {
     setIsAnimating(true);
     setSwaps(0);
     setComparisons(0);
+    const speed = 310 - animationSpeed;
     const animations = getAnimations(selectedAlgorithm, [...numbers]);
 
     for (let i = 0; i < animations.length; i++) {
@@ -75,7 +76,7 @@ function App() {
             setNumbers((oldNumbers) => {
               return swap([...oldNumbers], i, j);
             })
-          }, i * animationSpeed);
+          }, i * speed);
           break;
 
         case AnimationTypes.COLOR:
@@ -91,13 +92,13 @@ function App() {
               }
               return newBarColors;
             })
-          }, i * animationSpeed)
+          }, i * speed)
           break;
 
         case AnimationTypes.COLOR_RESET:
           setTimeout(() => {
             setBarColors({})
-          }, i * animationSpeed);
+          }, i * speed);
           break;
 
         case AnimationTypes.COLOR_RESET_BY_INDEXES:
@@ -110,7 +111,7 @@ function App() {
               }
               return newBarColors;
             })
-          }, i * animationSpeed)
+          }, i * speed)
           break;
 
         default:
@@ -120,7 +121,8 @@ function App() {
 
     setTimeout(() => {
       setIsAnimating(false);
-    }, (animations.length * animationSpeed) + 500)
+      setBarColors({})
+    }, (animations.length * speed) + 200)
 
   }
 
@@ -135,6 +137,7 @@ function App() {
       />
       <Visualizer
         numbers={numbers}
+        isAnimating={isAnimating}
         onArraySizeChange={arraySizeChangedHandler}
         onAnimationSpeedChange={animationSpeedChangedHandler}
         animationSpeed={animationSpeed}
