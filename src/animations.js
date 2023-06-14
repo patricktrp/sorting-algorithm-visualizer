@@ -2,6 +2,9 @@ import { Algorithms } from "./algorithms/constants";
 import { bubbleSort } from './algorithms/bubblesort';
 import { insertionSort } from "./algorithms/insertion-sort";
 import { selectionSort } from "./algorithms/selection-sort";
+import { mergeSort } from "./algorithms/mergesort";
+import { heapSort } from "./algorithms/heapsort";
+import { quickSort } from "./algorithms/quicksort";
 
 export const getAnimations = (algorithm, array) => {
     let animations;
@@ -17,10 +20,13 @@ export const getAnimations = (algorithm, array) => {
             animations = selectionSort(array);
             break;
         case Algorithms.MERGE_SORT:
+            animations = mergeSort(array);
             break;
         case Algorithms.HEAP_SORT:
+            animations = heapSort(array);
             break;
         case Algorithms.QUICK_SORT:
+            animations = quickSort(array);
             break;
         default:
             break;

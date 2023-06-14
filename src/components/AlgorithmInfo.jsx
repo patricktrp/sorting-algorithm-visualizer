@@ -86,7 +86,7 @@ const AlgorithmInfo = (props) => {
             </div>
             <div className={styles['info-card']}>
                 <div>Array Size</div>
-                <input type="range" min="10" max="180" onChange={e => props.onArraySizeChange(e.target.value)} value={props.arraySize} />
+                <input type="range" min="10" max="200" onChange={e => props.onArraySizeChange(e.target.value)} value={props.arraySize} />
             </div>
             <div className={styles['info-card']}>
                 <div>Animation Speed</div>
