@@ -1,6 +1,6 @@
 import { BsBoxArrowInRight } from 'react-icons/bs';
-import styles from './AlgorithmInfo.module.css';
 import { Ordering } from '../utils/array';
+import styles from './AlgorithmInfo.module.css';
 
 const ALGORITHM_INFO = {
     bubbleSort: {
@@ -90,7 +90,7 @@ const AlgorithmInfo = (props) => {
             </div>
             <div className={styles['info-card']}>
                 <div>Animation Speed</div>
-                <input disabled={props.isAnimating} type="range" min="10" max="300" onChange={e => props.onAnimationSpeedChange(e.target.value)} value={props.animationSpeed} />
+                <input disabled={props.isAnimating} type="range" min="10" max="200" onChange={e => props.onAnimationSpeedChange(e.target.value)} value={props.animationSpeed} />
             </div>
         </div>
     )

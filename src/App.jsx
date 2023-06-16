@@ -1,10 +1,9 @@
 import { useState } from 'react';
 import { Algorithms } from './algorithms/constants';
+import { AnimationTypes, getAnimations } from './animations';
 import Navbar from './components/Navbar';
 import Visualizer from './components/Visualizer';
-import { createRandomArrayBySize, swap } from './utils/array';
-import { Ordering } from './utils/array';
-import { getAnimations, AnimationTypes } from './animations';
+import { Ordering, createRandomArrayBySize, swap } from './utils/array';
 
 const INIITAL_ARRAY_LENGTH = 100;
 const INITIAL_ANIMATION_SPEED = 200;
@@ -62,7 +61,7 @@ function App() {
     setIsAnimating(true);
     setSwaps(0);
     setComparisons(0);
-    const speed = 310 - animationSpeed;
+    const speed = 202 - animationSpeed;
     const animations = getAnimations(selectedAlgorithm, [...numbers]);
 
     for (let i = 0; i < animations.length; i++) {
