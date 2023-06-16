@@ -1,6 +1,6 @@
 import { AnimationTypes } from "../animations";
-import { swap } from "../utils/array";
 import { colors } from '../theme';
+import { swap } from "../utils/array";
 
 export const bubbleSort = (arr) => {
     const animations = [];
@@ -10,7 +10,7 @@ export const bubbleSort = (arr) => {
         for (let j = 0; j < arr.length - i - 1; j++) {
             animations.push({ type: AnimationTypes.COLOR, coloring: [{ index: j, color: colors.first }, { index: j + 1, color: colors.first }], isComparison: true })
             if (arr[j] > arr[j + 1]) {
-                animations.push({ type: AnimationTypes.COLOR, coloring: [{ index: j, color: colors.third }, { index: j + 1, color: colors.third }], isComparison: true })
+                animations.push({ type: AnimationTypes.COLOR, coloring: [{ index: j, color: colors.third }, { index: j + 1, color: colors.third }] })
                 swap(arr, j, j + 1);
                 animations.push({ type: AnimationTypes.SWAP, indexes: [j, j + 1] })
                 isAlreadySorted = false;
