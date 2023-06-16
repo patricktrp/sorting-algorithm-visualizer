@@ -97,3 +97,7 @@
 .middle-control *  {
   margin: 0 10px;
 }
+
+.icon a {
+  color: var(--font-color-primary)
+}

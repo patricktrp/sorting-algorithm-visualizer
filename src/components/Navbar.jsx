@@ -24,8 +24,10 @@ const Navbar = (props) => {
     return (
         <nav className={styles['navbar']}>
             <div className={styles['navbar-layout']}>
-                <div>
-                    <BiSortUp size="1.8em" />
+                <div className={styles['icon']}>
+                    <a href="https://treppmann.dev" target='_blank' rel='noreferrer'> 
+                        <BiSortUp size="1.8em" />
+                    </a>
                 </div>
 
                 <div className={styles['middle-control']}>
