@@ -1,10 +1,9 @@
-import { Select } from '@chakra-ui/react';
+import { useEffect, useState } from 'react';
 import { BiSortUp } from 'react-icons/bi';
 import { BsFillMoonFill, BsFillSunFill } from 'react-icons/bs';
 import { FaGithubSquare, FaLinkedin } from 'react-icons/fa';
 import { Algorithms } from '../algorithms/constants';
 import styles from './Navbar.module.css';
-import { useState, useEffect } from 'react'
 
 const Navbar = (props) => {
     const [isDarkMode, setIsDarkMode] = useState(true);
@@ -29,9 +28,9 @@ const Navbar = (props) => {
                     <BiSortUp size="1.8em" />
                 </div>
 
-                <div style={{ display: 'flex', width: '20%', alignItems: 'center', justifyContent: 'space-between' }}>
+                <div className={styles['middle-control']}>
                     <button className={styles['btn']} disabled={props.isAnimating} onClick={props.onShuffleArray}>Shuffle</button>
-                    <select disabled={props.isAnimating} value={props.selectedAlgorithm} onChange={e => props.onAlgorithmChange(e.target.value)}>
+                    <select className={styles['select']} disabled={props.isAnimating} value={props.selectedAlgorithm} onChange={e => props.onAlgorithmChange(e.target.value)}>
                         <option value={Algorithms.BUBBLE_SORT}>Bubblesort</option>
                         <option value={Algorithms.INSERTION_SORT}>Insertion Sort</option>
                         <option value={Algorithms.SELECTION_SORT}>Selection Sort</option>
