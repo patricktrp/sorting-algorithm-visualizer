@@ -7,7 +7,7 @@
 
 .visualizer {
     flex-basis: 67%;
-    height: 70vh;
+    height: 40vh;
     margin: 1.5%;
     border-radius: 15px;
     box-sizing: border-box;
@@ -17,6 +17,12 @@
     padding: 20px;
     justify-content: center;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+@media screen and (min-width: 600px) {
+    .visualizer {
+        height: 70vh;
+    }
 }
 
 @media screen and (max-width: 1400px) {    
