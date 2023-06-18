@@ -12,7 +12,7 @@ const Visualizer = (props) => {
             <div className={styles['visualizer']}>
                 {props.numbers.map((num, idx) => {
                     const color = props.barColors[idx] || null;
-                    return <Bar key={num} value={num} length={arraySize} color={color} />
+                    return <Bar key={Math.random()} value={num} length={arraySize} color={color} />
                 })}
             </div>
             <RuntimeInfo swaps={props.swaps} comparisons={props.comparisons} />
@@ -20,4 +20,4 @@ const Visualizer = (props) => {
     )
 }
 
-export default Visualizer
+export default Visualizer;

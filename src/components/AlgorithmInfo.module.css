@@ -33,10 +33,19 @@
 
 .performance-info {
     display: flex;
+    width: 90%;
+    margin-bottom: 1.2vh;
     align-items: center;
     justify-content: space-between;
-    width: 90%;
-    margin-bottom: 5px;
+}
+
+.performance-info-time {
+    display: flex;
+    flex-direction: column;
+}
+
+.performance-info code {
+    font-size: larger;
 }
 
 .icon {

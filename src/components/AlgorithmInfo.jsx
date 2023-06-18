@@ -70,17 +70,26 @@ const AlgorithmInfo = (props) => {
                 <div>{algorithm.description}</div>
             </div>
             <div className={styles['info-card']}>
-                <div style={{ marginBottom: '10px' }}>Time Complexity</div>
+                <h3 style={{ marginTop: 0 }}>Time Complexity</h3>
                 <div className={styles['performance-info']}>
-                    <div>Best Case: {best_case.time}</div>
+                    <div className={styles['performance-info-time']}>
+                        <div>Best Case</div>
+                        <code>{best_case.time}</code>
+                    </div>
                     <BsBoxArrowInRight size="1.2rem" className={styles['icon']} onClick={() => props.isAnimating ? null : props.applyCaseOrdering(best_case.ordering)} />
                 </div>
                 <div className={styles['performance-info']}>
-                    <div>Avg. Case: {avg_case.time}</div>
+                    <div className={styles['performance-info-time']}>
+                        <div>Average Case</div>
+                        <code>{avg_case.time}</code>
+                    </div>
                     <BsBoxArrowInRight size="1.2rem" className={styles['icon']} onClick={() => props.isAnimating ? null : props.applyCaseOrdering(avg_case.ordering)} />
                 </div>
                 <div className={styles['performance-info']}>
-                    <div>Worst Case: {worst_case.time}</div>
+                    <div className={styles['performance-info-time']}>
+                        <div>Worst Case</div>
+                        <code>{worst_case.time}</code>
+                    </div>
                     <BsBoxArrowInRight size="1.2rem" className={styles['icon']} onClick={() => props.isAnimating ? null : props.applyCaseOrdering(worst_case.ordering)} />
                 </div>
             </div>
@@ -90,7 +99,8 @@ const AlgorithmInfo = (props) => {
             </div>
             <div className={styles['info-card']}>
                 <div>Animation Speed</div>
-                <input disabled={props.isAnimating} type="range" min="10" max="200" onChange={e => props.onAnimationSpeedChange(e.target.value)} value={props.animationSpeed} />
+                {/* <input disabled={props.isAnimating} type="range" min="10" max="200" onChange={e => props.onAnimationSpeedChange(e.target.value)} value={props.animationSpeed} /> */}
+                <input disabled={props.isAnimating} type="range" min="10" max="200" onChange={e => props.onArraySizeChange(e.target.value)} value={props.arraySize} />
             </div>
         </div>
     )

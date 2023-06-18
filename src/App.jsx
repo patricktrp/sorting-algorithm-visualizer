@@ -18,7 +18,7 @@ function App() {
   const [swaps, setSwaps] = useState(0);
 
   const shuffleArrayHandler = () => {
-    setNumbers((numbers) => createRandomArrayBySize(numbers.length))
+    setNumbers((numbers) => createRandomArrayBySize(numbers.length));
   }
 
   const arraySizeChangedHandler = (newSize) => {
@@ -61,7 +61,7 @@ function App() {
     setIsAnimating(true);
     setSwaps(0);
     setComparisons(0);
-    const speed = 202 - animationSpeed;
+    let speed = 201 - numbers.length;
     const animations = getAnimations(selectedAlgorithm, [...numbers]);
 
     for (let i = 0; i < animations.length; i++) {
@@ -112,6 +112,19 @@ function App() {
             })
           }, i * speed)
           break;
+
+
+          case AnimationTypes.SET_VALUE:
+            setTimeout(() => {
+              setNumbers(oldNumbers => {
+                const newNums = [...oldNumbers];
+                newNums[animation.index] = animation.newValue;
+                return newNums
+              });
+            }, i * speed);
+            break;
+
+          
 
         default:
           break;
